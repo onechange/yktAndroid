@@ -1,6 +1,7 @@
 package com.example.cwang.smartbutler.ui;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,7 +41,6 @@ public class SplashActivity extends AppCompatActivity {
 
                     }else {
                         startActivity(new Intent(SplashActivity.this,MainActivity.class));
-
                     }
                     finish();
                     break;
@@ -60,7 +60,9 @@ public class SplashActivity extends AppCompatActivity {
     private void initView() {
         handler.sendEmptyMessageDelayed(StaticClass.HANDLER_SPLASH,2000);
         tv_splash = findViewById(R.id.tv_splash);
-
+        //设置字体
+        Typeface fontType =  Typeface.createFromAsset(getAssets(),"fonts/LingWaiSC-Medium.otf");
+        tv_splash.setTypeface(fontType);
     }
 
     private boolean isFirst() {
@@ -71,6 +73,14 @@ public class SplashActivity extends AppCompatActivity {
        }else {
            return false;
        }
+
+    }
+
+    //禁止返回按钮
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 }

@@ -1,5 +1,9 @@
 package com.example.cwang.smartbutler.utils;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.widget.TextView;
+
 /**
  * 项目名: SmartButler
  * 包名: com.example.cwang.smartbutler.utils
@@ -10,4 +14,8 @@ package com.example.cwang.smartbutler.utils;
  */
 
 public class UtilTools {
+    public static void setFont(Context mContext , TextView mTextView){
+        Typeface fontType =  Typeface.createFromAsset(mContext.getAssets(),"fonts/LingWaiSC-Medium.otf");
+        mTextView.setTypeface(fontType);
+    }
 }

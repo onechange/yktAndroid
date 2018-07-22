@@ -13,6 +13,7 @@ import com.example.cwang.smartbutler.MainActivity;
 import com.example.cwang.smartbutler.R;
 import com.example.cwang.smartbutler.utils.ShereUtils;
 import com.example.cwang.smartbutler.utils.StaticClass;
+import com.example.cwang.smartbutler.utils.UtilTools;
 
 /**
  * 项目名: SmartButler
@@ -40,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(new Intent(SplashActivity.this,GuideActivity.class));
 
                     }else {
-                        startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                        startActivity(new Intent(SplashActivity.this,GuideActivity.class));
                     }
                     finish();
                     break;
@@ -61,8 +62,7 @@ public class SplashActivity extends AppCompatActivity {
         handler.sendEmptyMessageDelayed(StaticClass.HANDLER_SPLASH,2000);
         tv_splash = findViewById(R.id.tv_splash);
         //设置字体
-        Typeface fontType =  Typeface.createFromAsset(getAssets(),"fonts/LingWaiSC-Medium.otf");
-        tv_splash.setTypeface(fontType);
+        UtilTools.setFont(this,tv_splash);
     }
 
     private boolean isFirst() {

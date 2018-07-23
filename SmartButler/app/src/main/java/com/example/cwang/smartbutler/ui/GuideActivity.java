@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.cwang.smartbutler.R;
 
@@ -26,6 +27,7 @@ public class GuideActivity extends AppCompatActivity {
     //容器
     private List<View>vpList = new ArrayList<>();
     private View firstView,secView,thridView;
+    private ImageView point1,point2,point3;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,11 @@ public class GuideActivity extends AppCompatActivity {
         initView();
     }
     private void initView(){
+
+        point1 = findViewById(R.id.point1);
+        point2 = findViewById(R.id.point2);
+        point3 = findViewById(R.id.point3);
+        setPointImg(true,false,false);
         guideVP = findViewById(R.id.guideVP);
         firstView = View.inflate(this,R.layout.pager_item_first,null);
         secView = View.inflate(this, R.layout.pager_item_sec,null);
@@ -45,6 +52,34 @@ public class GuideActivity extends AppCompatActivity {
 
         //设置适配器
         guideVP.setAdapter(new GuideAdapter());
+
+        //监听viewpager滑动
+        guideVP.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position){
+                    case 0:
+                        setPointImg(true,false,false);
+                        break;
+                    case 1:
+                        setPointImg(false,true,false);
+                        break;
+                    case 2:
+                        setPointImg(false,false,true);
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
 
@@ -68,6 +103,24 @@ public class GuideActivity extends AppCompatActivity {
         @Override//删除
         public void destroyItem(ViewGroup container, int position, Object object) {
             container.removeView(vpList.get(position));
+        }
+    }
+
+    private void setPointImg(boolean isCheck1,boolean isCheck2,boolean isCheck3){
+        if (isCheck1){
+            point1.setBackgroundResource(R.drawable.point_on);
+        }else {
+            point1.setBackgroundResource(R.drawable.point_off);
+        }
+        if (isCheck2){
+            point2.setBackgroundResource(R.drawable.point_on);
+        }else {
+            point2.setBackgroundResource(R.drawable.point_off);
+        }
+        if (isCheck3){
+            point3.setBackgroundResource(R.drawable.point_on);
+        }else {
+            point3.setBackgroundResource(R.drawable.point_off);
         }
     }
 }

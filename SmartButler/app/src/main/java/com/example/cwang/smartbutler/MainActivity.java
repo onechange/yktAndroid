@@ -109,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         });
-        //绑定
+
+        //为tablayout绑定viewpager
         mTablayout.setupWithViewPager(mViewPager);
 
     }

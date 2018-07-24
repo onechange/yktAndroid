@@ -13,4 +13,7 @@ public class StaticClass {
     public static final int HANDLER_SPLASH = 1001;
 
     public static final String SHARE_IS_FIRST = "isFirst";
+
+    //bmob appID
+    public static final String APPLICATION_ID = "30e8d27aa50a690003dc8a9cf7f3c966";
 }

@@ -36,7 +36,9 @@
 
     </LinearLayout>
     <Button
+        android:id="@+id/registerBtn"
         android:textColor="@color/white"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/button_bg"
@@ -44,6 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
+        android:id="@+id/signBtn"
         android:textColor="@color/white"
         android:background="@drawable/button_bg"
         android:layout_marginRight="10dp"
@@ -52,6 +55,21 @@
         android:text="登录"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="忘记密码?"
+            android:textColor="@color/colorPrimary"
+            />
 
+    </LinearLayout>
 
 </LinearLayout>

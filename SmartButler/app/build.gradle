@@ -9,6 +9,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -30,4 +31,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //tablayout
     compile 'com.android.support:design:26.1.0'
+
+    //bmob后端云
+    compile 'cn.bmob.android:bmob-sdk:3.6.3'
+    //让应用兼容Android6.0
+    compile 'cn.bmob.android:http-legacy:1.0'
 }

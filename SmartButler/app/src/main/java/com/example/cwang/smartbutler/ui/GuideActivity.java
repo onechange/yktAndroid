@@ -1,5 +1,6 @@
 package com.example.cwang.smartbutler.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.example.cwang.smartbutler.MainActivity;
 import com.example.cwang.smartbutler.R;
 
 import java.util.ArrayList;
@@ -22,12 +24,13 @@ import java.util.List;
  * 创建时间: 2018/7/20 5:04 PM
  */
 
-public class GuideActivity extends AppCompatActivity {
+public class GuideActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewPager guideVP;
     //容器
     private List<View>vpList = new ArrayList<>();
     private View firstView,secView,thridView;
-    private ImageView point1,point2,point3;
+    private ImageView point1,point2,point3,quickJumpImg;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class GuideActivity extends AppCompatActivity {
     }
     private void initView(){
 
+        quickJumpImg = findViewById(R.id.quickJump);
+        quickJumpImg.setOnClickListener(this);
         point1 = findViewById(R.id.point1);
         point2 = findViewById(R.id.point2);
         point3 = findViewById(R.id.point3);
@@ -46,6 +51,7 @@ public class GuideActivity extends AppCompatActivity {
         secView = View.inflate(this, R.layout.pager_item_sec,null);
         thridView = View.inflate(this, R.layout.pager_item_thrid,null);
 
+        thridView.findViewById(R.id.btn_start).setOnClickListener(this);
         vpList.add(firstView);
         vpList.add(secView);
         vpList.add(thridView);
@@ -64,12 +70,15 @@ public class GuideActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position){
                     case 0:
+                        quickJumpImg.setVisibility(View.VISIBLE);
                         setPointImg(true,false,false);
                         break;
                     case 1:
+                        quickJumpImg.setVisibility(View.VISIBLE);
                         setPointImg(false,true,false);
                         break;
                     case 2:
+                        quickJumpImg.setVisibility(View.GONE);
                         setPointImg(false,false,true);
                         break;
                 }
@@ -81,6 +90,17 @@ public class GuideActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btn_start:
+            case R.id.quickJump:
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+                break;
+        }
     }
 
     class GuideAdapter extends PagerAdapter {

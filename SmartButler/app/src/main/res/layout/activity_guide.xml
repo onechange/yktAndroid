@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@color/green"
     >
+
     <android.support.v4.view.ViewPager
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,4 +41,14 @@
             />
 
     </LinearLayout>
+    <ImageView
+        android:id="@+id/quickJump"
+        android:layout_width="40dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/quick_arrow"
+
+        />
 </RelativeLayout>

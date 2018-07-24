@@ -16,4 +16,14 @@
         android:text="three"
         android:textSize="50sp"
         />
+    <Button
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_bg"
+        android:id="@+id/btn_start"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="进入主页"
+        android:textColor="@android:color/white"
+        />
+
 </LinearLayout>

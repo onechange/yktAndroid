@@ -62,7 +62,14 @@
         android:hint="再输入一次"
         />
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/et_email"
+        android:hint="邮箱"
+        />
+
+    <TextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="注册成功需要前往邮箱验证功能,否则无法登录!"

@@ -15,6 +15,10 @@ public class ShereUtils {
 
     public static final String NAME = "config";
 
+    public static void deleShare(Context mContext,String key){
+        SharedPreferences sp = mContext.getSharedPreferences(NAME,Context.MODE_PRIVATE);
+        sp.edit().remove(key).commit();
+    }
     public static void putString(Context mContext,String key,String value){
 
         SharedPreferences sp = mContext.getSharedPreferences(NAME,Context.MODE_PRIVATE);

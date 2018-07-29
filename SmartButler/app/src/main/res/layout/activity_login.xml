@@ -13,10 +13,13 @@
         android:layout_height="wrap_content" />
 
     <EditText
+        android:id="@+id/login_username"
         android:hint="用户名"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
+        android:inputType="numberPassword"
+        android:id="@+id/login_password"
         android:hint="密码"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -27,6 +30,7 @@
         android:orientation="vertical"
         >
         <CheckBox
+            android:id="@+id/save_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

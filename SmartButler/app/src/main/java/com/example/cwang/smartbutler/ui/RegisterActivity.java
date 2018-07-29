@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import com.example.cwang.smartbutler.R;
 import com.example.cwang.smartbutler.entity.MyUser;
+import com.example.cwang.smartbutler.utils.L;
+
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener{
 
@@ -61,27 +65,51 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 if (!TextUtils.isEmpty(name)
                         && !TextUtils.isEmpty(age)
                         && !TextUtils.isEmpty(password)
-
+                        && !TextUtils.isEmpty(email)
                         && !TextUtils.isEmpty(secPassword)
-                        && !TextUtils.isEmpty(email)) {
-                    //判断性别
-                    registerRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                        @Override
-                        public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                            if (i == R.id.rb_boy) {
-                                isGender = true;
-                            } else if(i == R.id.rb_girl) {
-                                isGender = false;
+                        ) {
+                    if (password.equals(secPassword)){
+                        //判断性别
+                        registerRG.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                                if (i == R.id.rb_boy) {
+                                    isGender = true;
+                                } else if(i == R.id.rb_girl) {
+                                    isGender = false;
+                                }
                             }
+                        });
+                        //判断简介是否为空
+                        if (!TextUtils.isEmpty(desc)){
+                            desc = "这人很懒什么都没留下";
                         }
-                    });
-                    //判断简介是否为空
-                    if (!TextUtils.isEmpty(desc)){
-                        desc = "这人很懒什么都没留下";
+                        //注册
+                        MyUser user = new MyUser();
+                        user.setUsername(name);
+                        user.setAge(Integer.parseInt(age));
+                        user.setDesc(desc);
+                        user.setGender(isGender);
+                        user.setPassword(password);
+                        user.setEmail(email);
+                        user.signUp(new SaveListener<MyUser>() {
+                            @Override
+                            public void done(MyUser myUser, BmobException e) {
+                                if (e==null){
+
+                                    Toast.makeText(RegisterActivity.this,"注册成功",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                }else {
+                                    L.d(e.toString());
+                                    Toast.makeText(RegisterActivity.this,"注册失败" + e.toString(),Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+                    } else {
+                        Toast.makeText(this,"两次密码输入不一致",Toast.LENGTH_SHORT).show();
                     }
-                    //注册
-                    MyUser user = new MyUser();
-                    user
+
 
             } else {
                     Toast.makeText(this,"输入框不能为空",Toast.LENGTH_SHORT).show();

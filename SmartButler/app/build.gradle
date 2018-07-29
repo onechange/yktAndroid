@@ -36,4 +36,5 @@ dependencies {
     compile 'cn.bmob.android:bmob-sdk:3.6.5'
     //让应用兼容Android6.0
     compile 'cn.bmob.android:http-legacy:1.0'
+
 }

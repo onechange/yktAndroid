@@ -46,7 +46,9 @@
         <activity android:name=".ui.GuideActivity"
             android:theme="@style/NoActivityFullScreen"
             />
+        <activity android:name=".ui.LoginActivity" />
 
+        <activity android:name=".ui.RegisterActivity" />
     </application>
 
 </manifest>

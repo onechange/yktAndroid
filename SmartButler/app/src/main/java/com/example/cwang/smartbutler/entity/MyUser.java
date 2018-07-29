@@ -14,7 +14,15 @@ public class MyUser extends BmobUser{
 
     private int age; //年龄
     private boolean gender; //性别
-    private String desc;
+    private String desc; //简介
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     public boolean isGender() {
         return gender;
@@ -32,11 +40,5 @@ public class MyUser extends BmobUser{
         this.desc = desc;
     }
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 }

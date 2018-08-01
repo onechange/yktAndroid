@@ -1,11 +1,12 @@
 package com.example.cwang.smartbutler.ui;
 
-import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -16,8 +17,7 @@ import com.example.cwang.smartbutler.MainActivity;
 import com.example.cwang.smartbutler.R;
 import com.example.cwang.smartbutler.entity.MyUser;
 import com.example.cwang.smartbutler.utils.ShereUtils;
-
-import org.w3c.dom.Text;
+import com.example.cwang.smartbutler.view.CustomDialog;
 
 import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.SaveListener;
@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText username;
     private EditText user_password;
     private CheckBox save_password;
+    private Dialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,6 +55,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         username = findViewById(R.id.login_username);
         user_password = findViewById(R.id.login_password);
         save_password = findViewById(R.id.save_password);
+
+        dialog = new CustomDialog(this,200,200,R.layout.dialog_loding,R.style.Theme_dialog, Gravity.CENTER,R.style.pop_anim_style);
+        //屏幕点击无效
+        dialog.setCancelable(false);
 
         boolean isCheck = ShereUtils.getBool(this,"savepassword",false);
         save_password.setChecked(isCheck);
@@ -76,6 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String name = username.getText().toString().trim();
                 String password = user_password.getText().toString();
                 if (!TextUtils.isEmpty(name) & !TextUtils.isEmpty(password)) {
+                    dialog.show();
                     //登录
                     MyUser user = new MyUser();
                     user.setPassword(password);
@@ -84,10 +90,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void done(MyUser myUser, BmobException e) {
                             if (e == null){
+                                dialog.dismiss();
                                 Toast.makeText(LoginActivity.this,"登录成功!",Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 finish();
                             }else {
+                                dialog.dismiss();
+
                                 Toast.makeText(LoginActivity.this,"登录失败" + e.toString(),Toast.LENGTH_SHORT).show();
                             }
                         }

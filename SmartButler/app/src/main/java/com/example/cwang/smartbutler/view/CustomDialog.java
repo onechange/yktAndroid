@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.cwang.smartbutler.R;
+import com.example.cwang.smartbutler.entity.MyUser;
 
 /**
  * 项目名: SmartButler

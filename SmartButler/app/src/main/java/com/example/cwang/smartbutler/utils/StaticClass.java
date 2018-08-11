@@ -16,4 +16,10 @@ public class StaticClass {
 
     //bmob appID
     public static final String APPLICATION_ID = "30e8d27aa50a690003dc8a9cf7f3c966";
+
+    //聚合数据快递ID
+    public static final String EXPRESS_ID = "7d26da7a928c1de31f336f05e96c74b0";
+
+
+
 }

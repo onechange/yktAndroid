@@ -40,6 +40,4 @@
         android:id="@+id/fab_setting"
         tools:ignore="InvalidId" />
 
-
-
 </RelativeLayout>

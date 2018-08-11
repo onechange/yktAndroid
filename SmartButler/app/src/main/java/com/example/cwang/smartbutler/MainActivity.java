@@ -55,17 +55,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFragment = new ArrayList<>();
         mFragment.add(new ButlerFragment());
         mFragment.add(new GirlFragment());
-        mFragment.add(new UserFragment());
         mFragment.add(new WeChatFragment());
+        mFragment.add(new UserFragment());
+
 
     }
     //初始化界面
     private void initView() {
-        fab_setting = (FloatingActionButton) findViewById(R.id.fab_setting);
+        fab_setting = findViewById(R.id.fab_setting);
         fab_setting.setOnClickListener(this);
         fab_setting.setVisibility(View.GONE);
-        mTablayout = (TabLayout) findViewById(R.id.mTabLayout);
-        mViewPager = (ViewPager) findViewById(R.id.mViewPager);
+        mTablayout =  findViewById(R.id.mTabLayout);
+        mViewPager =  findViewById(R.id.mViewPager);
         //预加载
         mViewPager.setOffscreenPageLimit(mFragment.size());
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

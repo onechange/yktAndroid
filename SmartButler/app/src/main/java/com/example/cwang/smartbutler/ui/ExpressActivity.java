@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.cwang.smartbutler.R;
+import com.example.cwang.smartbutler.adapter.ExpressAdapter;
 import com.example.cwang.smartbutler.entity.ExpressData;
 import com.example.cwang.smartbutler.utils.L;
 import com.example.cwang.smartbutler.utils.StaticClass;
@@ -22,6 +23,7 @@ import org.json.JSONObject;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,7 +38,7 @@ public class ExpressActivity extends BaseActivity implements View.OnClickListene
     private EditText et_name;
     private EditText et_number;
     private Button btn_search;
-
+    private ListView mlistView;
     private List<ExpressData> mList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +52,7 @@ public class ExpressActivity extends BaseActivity implements View.OnClickListene
     et_number = findViewById(R.id.et_number);
     btn_search  = findViewById(R.id.btn_search);
     btn_search.setOnClickListener(this);
-
+    mlistView = findViewById(R.id.express_listView);
     }
 
     @Override
@@ -84,7 +86,7 @@ public class ExpressActivity extends BaseActivity implements View.OnClickListene
             try {
                 JSONObject jsonObject = new JSONObject(t);
                 JSONObject jsonRequest = jsonObject.getJSONObject("result");
-                JSONArray jsonArray = jsonObject.getJSONArray("list");
+                JSONArray jsonArray = jsonRequest.getJSONArray("list");
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject json = (JSONObject) jsonArray.get(i);
@@ -94,6 +96,9 @@ public class ExpressActivity extends BaseActivity implements View.OnClickListene
                     model.setRemark(json.getString("remark"));
                     mList.add(model);
                 }
+                Collections.reverse(mList);
+                ExpressAdapter adapter = new ExpressAdapter(this,mList);
+                mlistView.setAdapter(adapter);
 
             } catch (JSONException e) {
                 e.printStackTrace();

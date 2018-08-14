@@ -36,6 +36,7 @@ import com.example.cwang.smartbutler.R;
 import com.example.cwang.smartbutler.entity.MyUser;
 import com.example.cwang.smartbutler.ui.ExpressActivity;
 import com.example.cwang.smartbutler.ui.LoginActivity;
+import com.example.cwang.smartbutler.ui.PhoneActivity;
 import com.example.cwang.smartbutler.utils.L;
 import com.example.cwang.smartbutler.utils.ShereUtils;
 import com.example.cwang.smartbutler.utils.UtilTools;
@@ -209,7 +210,10 @@ public class UserFragment extends Fragment implements View.OnClickListener {
                 openPicture();
                 break;
             case R.id.tv_courier:
-            startActivity(new Intent(getActivity(),ExpressActivity.class));
+                startActivity(new Intent(getActivity(),ExpressActivity.class));
+                break;
+            case R.id.tv_phone:
+                startActivity(new Intent(getActivity(),PhoneActivity.class));
                 break;
         }
     }

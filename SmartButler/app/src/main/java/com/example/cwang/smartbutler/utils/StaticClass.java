@@ -20,6 +20,6 @@ public class StaticClass {
     //聚合数据快递ID
     public static final String EXPRESS_ID = "7d26da7a928c1de31f336f05e96c74b0";
 
-
+    public static final String WECAHT_ID = "49770b2baf68e739a22177b0786ae2ba";
 
 }

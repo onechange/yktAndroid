@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mFragment = new ArrayList<>();
         mFragment.add(new ButlerFragment());
-        mFragment.add(new GirlFragment());
         mFragment.add(new WeChatFragment());
+        mFragment.add(new GirlFragment());
         mFragment.add(new UserFragment());
 
 
